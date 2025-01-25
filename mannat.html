@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        #doc {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 3px;
+        }
+    </style>
+    <script type="text/javascript">
+        function prt(){
+            alert("This is an Employee Form designed by Mannat Ashish")
+        }
+        function show(){
+            var d1=document.getElementById("nm").value
+            var d2=document.getElementById("adr").value
+            var d3=document.getElementById("cty").value
+            var d4=document.querySelector('input[name="gen"]:checked').value
+            var d5a=[]
+            var d5=document.querySelectorAll('input[name^="veh"]:checked')
+            d5.forEach(checkbox => {
+                d5a.push(checkbox.value)
+            })
+            var d6=document.getElementById("jpg").files[0].name
+            let final="<p>Name: "+d1+"</p>"
+            final+="<p>Address: "+d2+"</p>"
+            final+="<p>City: "+d3+"</p>"
+            final+="<p>Gender: "+d4+"</p>"
+            final+="<p>Vehicles: "+d5a.join(", ")+"</p>"
+            final+="<p>Photo: "+d6+"</p>"
+            document.getElementById("doc").innerHTML=final
+        }
+    </script>
+</head>
+<body>
+    <h1 onclick="prt()">Employee Form</h1>
+    <form action="abc man">
+    Name<input type="text" id="nm" placeholder="Enter Your Name Here"/><br>
+    Address<textarea rows="4" cols="80" id="adr" placeholder="Enter Your Addess Here"></textarea><br>
+    City<select id="cty">
+        <option value="None">--select city--</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Gurugram">Gurugram</option>
+        <option value="Chandigarh">Chandigarh</option>
+        <option value="Bhubaneshwar">Bhubaneshwar</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Kolkata">Kolkata</option>
+        <option value="Hyderabad">Hyderabad</option>
+        <option value="Chennai">Chennai</option></select><br>
+    Gender<br>
+    <input type="radio" id="male" name="gen" value="Male"/>Male<br>
+    <input type="radio" id="female" name="gen" value="Female"/>Female<br>
+    <input type="radio" id="other" name="gen" value="Rather Not Say"/>Rather Not Say<br>
+    Vehicles<br>
+    <input type="checkbox" name="veh" value="Car"/>Car<br>
+    <input type="checkbox" name="veh" value="Motor Bike"/>Motor Bike<br>
+    <input type="checkbox" name="veh" value="Scooter"/>Scooter<br>
+    Photo<input type="file" id="jpg" name="pht">
+    <input type="button" value="Show Data" id="showData" onclick="show()"/><br>
+    </form><br>
+    <span id="doc"></span>
+</body>
+</html>
